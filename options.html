@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reading Copilot — Settings</title>
+    <script type="module" crossorigin src="/options.js"></script>
+    <link rel="modulepreload" crossorigin href="/chunks/modulepreload-polyfill.js">
+    <link rel="modulepreload" crossorigin href="/chunks/storage.js">
+    <link rel="stylesheet" crossorigin href="/assets/options.css">
+  </head>
+  <body>
+    <main>
+      <div class="header-logo">
+        <img src="/icon48.png" alt="Reading Copilot logo" width="36" height="36" />
+        <h1>Reading Copilot</h1>
+      </div>
+      <p class="subtitle">
+        Inline AI reading assistant. <kbd>Alt+Shift+E</kbd> explain · <kbd>Alt+K</kbd> command palette
+      </p>
+      <form id="settings-form">
+        <fieldset>
+          <legend>AI provider</legend>
+          <label class="radio">
+            <input type="radio" name="provider" id="provider-puter" value="puter" />
+            Puter.js <span class="muted">— no API key required</span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="provider" id="provider-openai" value="openai" />
+            Custom OpenAI-compatible API
+            <span class="muted">— OpenAI, OpenRouter, Ollama, LM Studio, vLLM…</span>
+          </label>
+        </fieldset>
+
+        <section id="puter-section">
+          <label for="puter-model">Model</label>
+          <input type="text" id="puter-model" placeholder="gpt-4o-mini" />
+        </section>
+
+        <section id="openai-section" hidden>
+          <label for="openai-base-url">Base URL</label>
+          <input type="url" id="openai-base-url" placeholder="https://api.openai.com/v1" />
+
+          <label for="openai-api-key">API key <span class="muted">(stored locally, never synced)</span></label>
+          <div class="key-row">
+            <input type="password" id="openai-api-key" autocomplete="off" />
+            <button type="button" id="toggle-key" aria-pressed="false">Show</button>
+          </div>
+
+          <label for="openai-model">Model</label>
+          <input type="text" id="openai-model" placeholder="gpt-4o-mini" />
+
+          <div class="grid-2">
+            <div>
+              <label for="openai-temperature">Temperature</label>
+              <input type="number" id="openai-temperature" min="0" max="2" step="0.1" />
+            </div>
+            <div>
+              <label for="openai-max-tokens">Max tokens</label>
+              <input type="number" id="openai-max-tokens" min="1" max="32000" step="1" />
+            </div>
+          </div>
+        </section>
+
+        <fieldset>
+          <legend>Preferences</legend>
+          <label for="theme">Theme</label>
+          <select id="theme">
+            <option value="auto">Auto (match the page)</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+
+          <label for="preferred-layout">Default conversation layout</label>
+          <select id="preferred-layout">
+            <option value="bottom">Compact Bottom Chat (Default)</option>
+            <option value="side">Right Side Panel</option>
+          </select>
+
+          <label for="target-language">Translate to</label>
+          <input type="text" id="target-language" placeholder="English" />
+
+          <label for="disabled-sites">Disabled sites <span class="muted">(one hostname per line)</span></label>
+          <textarea id="disabled-sites" rows="4" placeholder="example.com"></textarea>
+        </fieldset>
+
+        <div class="actions">
+          <button type="submit" class="primary">Save</button>
+          <span id="save-status" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

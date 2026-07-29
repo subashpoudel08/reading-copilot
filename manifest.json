@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "Reading Copilot",
+  "version": "1.0.0",
+  "description": "Explain, summarize, and translate anything you're reading — inline, right where you're reading it.",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "contextMenus",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*",
+    "file:///*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_title": "Reading Copilot — explain selection or page (Alt+Shift+E)",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "options_page": "options.html",
+  "commands": {
+    "invoke-copilot": {
+      "suggested_key": { "default": "Alt+Shift+E" },
+      "description": "Explain the selected text (or ask about the page)"
+    },
+    "open-palette": {
+      "suggested_key": { "default": "Alt+K" },
+      "description": "Open the Reading Copilot command palette"
+    }
+  }
+}

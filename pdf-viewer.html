@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reading Copilot — PDF</title>
+  <script type="module" crossorigin src="/pdf-viewer.js"></script>
+  <link rel="modulepreload" crossorigin href="/chunks/modulepreload-polyfill.js">
+  <link rel="stylesheet" crossorigin href="/assets/pdf-viewer.css">
+</head>
+<body>
+  <header id="toolbar">
+    <span id="doc-title">Loading…</span>
+    <span id="page-indicator" aria-live="polite"></span>
+  </header>
+  <main id="pages"></main>
+  <div id="notice" role="alert" hidden></div>
+</body>
+</html>
